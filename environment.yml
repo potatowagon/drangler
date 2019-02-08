@@ -1,0 +1,7 @@
+name: cg3002
+dependencies:
+  - numpy
+  - unittest
+channels:
+  - defaults
+

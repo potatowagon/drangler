@@ -23,7 +23,7 @@ class Sampler():
         end = start + self.frame_length
         while end <= self.cur_bytestring_set.shape[1]:
             frame = numpy.copy(self.cur_bytestring_set[0:self.num_of_signals, start:end])
-            frame_collection = numpy.append(frame_collection, frame, axis = 0)
+            frame_collection = numpy.append(frame_collection, [frame], axis = 0)
             start += self.sampling_interval
             end += self.sampling_interval
 

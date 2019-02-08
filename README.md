@@ -2,7 +2,7 @@
 Dance Data Wrangler
 
 ## Setup python enviroment
-If your havn't already, download conda.
+If your havn't already, download <a href="https://conda.io/en/latest/miniconda.html">conda</a>.
 
 cd to root of this folder, and 
 ```

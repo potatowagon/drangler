@@ -11,8 +11,9 @@ conda activate cg3002
 ```
 
 ## Install drangler
-cd to root of this folder, and 
+cd to drangler module, and run the setup script
 ```
+cd ./drangler
 python setup.py install
 ```
 You may now import drangler globally.
@@ -30,7 +31,7 @@ sampling_interval = 2
 sampler = Sampler.Sampler(num_of_signals, frame_length, sampling_interval)
 frame_collection = sampler.sample(bytestring_set) # bytestring_set is a 2D numpy array of bytestrings 
 ```
-See pytest.py for more sample scripts
+See drangler/pytest.py and examples for more sample scripts
 
 ### Sampler.sample()
 ![alt text](./img/1.PNG)

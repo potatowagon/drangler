@@ -3,7 +3,7 @@ import numpy
 
 ''' Example code for recording and saving frames.  
 You are now recording a specific dance move.
-The pi is recieving recieving Bytesrtring sets for the dance move.
+The pi is recieving Bytesrtring sets for the dance move.
 '''
 
 # initialise Sampler

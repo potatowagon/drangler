@@ -48,14 +48,14 @@ class TestSampler(unittest.TestCase):
 
     def test_sample(self):
         print("\nTest Sample")
-        frame_collection = self.sampler.sample(self.dummy_bytestring_set, collection_is_numpy=True)
+        frame_collection = self.sampler.sample(self.dummy_bytestring_set, return_as_numpy=True)
         print("frame_collection: \n", frame_collection)
         self.assertEqual(frame_collection.shape[0], 3)
         self.assertEqual(self.sampler.leftover_bytestring_set.shape[1], 4)
 
     def test_subsequent_sample(self):
         print("\nTest Subsequent Sample")
-        frame_collection = self.sampler.sample(self.dummy_bytestring_set, collection_is_numpy=True)
+        frame_collection = self.sampler.sample(self.dummy_bytestring_set, return_as_numpy=True)
         print("frame_collection: \n", frame_collection)
         self.assertEqual(frame_collection.shape[0], 5)
         self.assertEqual(self.sampler.leftover_bytestring_set.shape[1], 4)

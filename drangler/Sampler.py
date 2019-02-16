@@ -9,7 +9,7 @@ class Sampler():
         self.sampling_interval = sampling_interval
         self.num_of_signals = num_of_signals
 
-    def sample(self, bytestring_set, collection_is_numpy=False):
+    def sample(self, bytestring_set, return_as_numpy=False):
         """input bytestring set is a numpy array. 
         Returns a collection of frames, represented by numpy arrays
         """
@@ -28,7 +28,7 @@ class Sampler():
             start += self.sampling_interval
             end += self.sampling_interval
 
-        if(collection_is_numpy):
+        if(return_as_numpy):
             frame_collection = numpy.array(frame_collection)
         
         self.leftover_bytestring_set = self.cur_bytestring_set[0:self.num_of_signals, start:self.cur_bytestring_set.shape[1]]

@@ -11,12 +11,12 @@ num_of_signals = 6
 frame_length = 5
 sampling_interval = 2
 
-sampler = drangler.Sampler.Sampler(num_of_signals, frame_length, sampling_interval)
+sampler = Sampler.Sampler(num_of_signals, frame_length, sampling_interval)
 
 frame_collection = []
 # while there are incoming bytestring sets (numpy array)
 while(bytestring_set_recieved):
-    frame_collection.append(sampler.sample(bytestring_set))
+    frame_collection.extend(sampler.sample(bytestring_set))
 
 # When it is time to stop recording, 
 # convert frame_collection to numpy

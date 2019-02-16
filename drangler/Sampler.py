@@ -9,11 +9,12 @@ class Sampler():
         self.sampling_interval = sampling_interval
         self.num_of_signals = num_of_signals
 
-    def sample(self, bytestring_set):
+    def sample(self, bytestring_set, collection_is_numpy=False):
         """input bytestring set is a numpy array. 
         Returns a collection of frames, represented by numpy arrays
         """
-        frame_collection = numpy.zeros((0, self.num_of_signals, self.frame_length))
+        frame_collection = []
+        
         if(self.leftover_bytestring_set is not None):
             self.cur_bytestring_set = numpy.append(self.leftover_bytestring_set, bytestring_set, axis = 1)
         else:
@@ -23,10 +24,13 @@ class Sampler():
         end = start + self.frame_length
         while end <= self.cur_bytestring_set.shape[1]:
             frame = numpy.copy(self.cur_bytestring_set[0:self.num_of_signals, start:end])
-            frame_collection = numpy.append(frame_collection, [frame], axis = 0)
+            frame_collection.append(frame)
             start += self.sampling_interval
             end += self.sampling_interval
 
+        if(collection_is_numpy):
+            frame_collection = numpy.array(frame_collection)
+        
         self.leftover_bytestring_set = self.cur_bytestring_set[0:self.num_of_signals, start:self.cur_bytestring_set.shape[1]]
         return frame_collection
 

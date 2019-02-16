@@ -44,20 +44,28 @@ class TestSampler(unittest.TestCase):
 
     # initialise Sampler
     sampler = Sampler.Sampler(num_of_signals, frame_length, sampling_interval)
+    sampler2 = Sampler.Sampler(num_of_signals, frame_length, sampling_interval)
 
     def test_sample(self):
         print("\nTest Sample")
-        frame_collection = self.sampler.sample(self.dummy_bytestring_set)
+        frame_collection = self.sampler.sample(self.dummy_bytestring_set, collection_is_numpy=True)
         print("frame_collection: \n", frame_collection)
         self.assertEqual(frame_collection.shape[0], 3)
         self.assertEqual(self.sampler.leftover_bytestring_set.shape[1], 4)
 
     def test_subsequent_sample(self):
         print("\nTest Subsequent Sample")
-        frame_collection = self.sampler.sample(self.dummy_bytestring_set)
+        frame_collection = self.sampler.sample(self.dummy_bytestring_set, collection_is_numpy=True)
         print("frame_collection: \n", frame_collection)
         self.assertEqual(frame_collection.shape[0], 5)
         self.assertEqual(self.sampler.leftover_bytestring_set.shape[1], 4)
+
+    def test_sample_ouput_list(self):
+        print("\nTest Subsequent Sample ouput is list")
+        frame_collection = self.sampler2.sample(self.dummy_bytestring_set)
+        print(frame_collection)
+        self.assertIsInstance(frame_collection[0], numpy.array(0).__class__)
+        self.assertIsInstance(frame_collection, [].__class__)
 
     def test_feature_extractor(self):
         print("\nTest Feature Extractor")

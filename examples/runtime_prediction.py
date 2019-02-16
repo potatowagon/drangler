@@ -17,8 +17,8 @@ sampler = drangler.Sampler.Sampler(num_of_signals, frame_length, sampling_interv
 # while there are incoming bytestring sets (numpy array)
 while(bytestring_set_recieved):
     # Extract frames from bytestring set
-    # collection_is_numpy=True to return frame_collection as numpy array
-    frame_collection = sampler.sample(bytestring_set, collection_is_numpy=True)
+    # return_as_numpy=True to return frame_collection as numpy array
+    frame_collection = sampler.sample(bytestring_set, return_as_numpy=True)
     
     #Extract features from frames
     data_collection = drangler.FeatureExtractor.extract(frame_collection)

@@ -15,7 +15,7 @@ sampler = Sampler.Sampler(num_of_signals, frame_length, sampling_interval)
 
 frame_collection = []
 # while there are incoming bytestring sets (numpy array)
-while(bytestring_set_recieved):
+while(bytestring_set_received):
     frame_collection.extend(sampler.sample(bytestring_set))
 
 # When it is time to stop recording, 

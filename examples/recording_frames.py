@@ -1,4 +1,4 @@
-import drangler
+from drangler import Sampler
 import numpy
 
 ''' Example code for recording and saving frames.  
@@ -23,7 +23,7 @@ while(bytestring_set_recieved):
 frame_collection = numpy.array(frame_collection)
 
 # save frame collection as .npy
-numpy.save("training_data_name", frame_collection)
+numpy.save("frames_name", frame_collection)
 
 # create labels
 move_number = 0 #chicken

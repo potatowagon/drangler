@@ -2,12 +2,10 @@ import numpy
 
 def extract(frame_collection):
     data_collection = []
-    for i in range(0,frame_collection.shape[0]):
-        frame = frame_collection[i]
+    for frame in frame_collection:
         data = []
-        for j in range(0, frame_collection.shape[1]):
-            signal = frame[j]
-            # Adjust fetures here
+        for signal in frame:
+            # Adjust features here
             data.append(mean(signal))
             data.append(median(signal))
             data.append(variance(signal))

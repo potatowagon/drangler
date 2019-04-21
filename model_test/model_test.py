@@ -7,6 +7,7 @@ from sklearn.preprocessing import normalize
 from validation import ConfusionMatrix
 from validation import LOOCV
 from validation import KFold
+from joblib import dump
 
 class TestModel(unittest.TestCase):
     
@@ -23,12 +24,12 @@ class TestModel(unittest.TestCase):
     
     training_data = data[0:seperator]
     test_data = data[seperator:len(data)]
-    print("Training data, labels shape: ") 
+    print("Training data, test data shape: ") 
     print(training_data.shape, test_data.shape)
 
     training_labels = labels[0:seperator]
     test_labels = labels[seperator:len(labels)]
-    print("Test data, labels shape: ") 
+    print("training labels, labels shape: ") 
     print(training_labels.shape, test_labels.shape)
 
     def test_RF(self):
@@ -36,17 +37,19 @@ class TestModel(unittest.TestCase):
         model = RandomForestClassifier() # using default
         model.fit(self.training_data, self.training_labels)
         predicted_labels = model.predict(self.test_data)
+        dump(model, "rf.joblib")
         ConfusionMatrix.print_confusion_matrix(self.test_labels, predicted_labels)
-        KFold.get_k_fold_accuracy(model, 5, self.data, self.labels)
+        print(KFold.get_k_fold_accuracy(model, 5, self.data, self.labels))
         #LOOCV.get_loocv_accuracy(model, self.data, self.labels)
 
     def test_KNN(self): 
         print("\nBegin KNN")
         model = KNeighborsClassifier() # using default
         model.fit(self.training_data, self.training_labels)
+        dump(model, "knn.joblib")
         predicted_labels = model.predict(self.test_data)
         ConfusionMatrix.print_confusion_matrix(self.test_labels, predicted_labels)
-        KFold.get_k_fold_accuracy(model, 5, self.data, self.labels)
+        print(KFold.get_k_fold_accuracy(model, 5, self.data, self.labels))
         
 if __name__ == '__main__':
     unittest.main()

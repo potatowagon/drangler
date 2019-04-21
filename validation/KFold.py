@@ -12,7 +12,7 @@ Output:
 '''
 def get_k_fold_accuracy(model, folds, data, labels):
     print(f"\nCalculating KFold accuracy with {folds} iterations...")
-    kf = KFold(folds)
+    kf = KFold(folds, shuffle=True)
     total_accuracy = 0
     for training_indices, testing_indices in kf.split(data):
         model.fit(data[training_indices], labels[training_indices])

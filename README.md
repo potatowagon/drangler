@@ -1,5 +1,5 @@
 # Validation and Testing of Models
-Code for the results reflected in the report under Chapter 5.5.1 can be found under [a validation_report](validation_report)
+Code for the results reflected in the report under Chapter 5.5.1 can be found under [validation_report](validation_report)
 
 # Drangler
 Dance Data Wrangler

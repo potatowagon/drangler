@@ -43,7 +43,7 @@ data = numpy.delete(data, -1, axis=1)
 print(data.shape)
 data = preprocessing.scale(data)
 pandas.DataFrame(data).to_csv("./data_n_scale.csv")
-# ============== not normalised ===============
+
 #optimise
 #rf
 accuracy = []

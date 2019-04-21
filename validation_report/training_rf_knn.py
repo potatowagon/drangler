@@ -71,9 +71,7 @@ print(dict(zip(unique, counts)))
 
 data = numpy.delete(data, -1, axis=1)
 print(data.shape)
-'''
-To scale or not to scale
-'''
+
 pandas.DataFrame(data).to_csv("./data_n.csv")
 #optimise
 #rf
@@ -116,7 +114,7 @@ df = pandas.DataFrame.from_dict({
 })
 df.to_csv('./out_knn/neighbours_vs_acc.csv')
 
-#================================================
+
 '''
 ##NOTE: Normalising did not improve accuracy
 # ==================== normalised 0-1 =============
